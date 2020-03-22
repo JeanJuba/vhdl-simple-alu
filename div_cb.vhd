@@ -56,7 +56,11 @@ begin
 					estado <= CHECK;
 				
 				when DISPLAY =>
+				if reset = '1' then
 					estado <= IDLE;
+				else
+					estado <= DISPLAY;
+				end if;
 		
 			end case;
 		end if;

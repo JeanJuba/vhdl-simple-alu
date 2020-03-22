@@ -41,6 +41,6 @@
 	
 		reset<= '1', '0' after 20 ns;
 		start <= '0', '1' after 20 ns;
-		instruction <= "1001010011";
+		instruction <= "1111110011";
 
   END;
