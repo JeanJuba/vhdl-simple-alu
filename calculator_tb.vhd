@@ -3,6 +3,8 @@
   LIBRARY ieee;
   USE ieee.std_logic_1164.ALL;
   USE ieee.numeric_std.ALL;
+  USE ieee.std_logic_unsigned.ALL;
+
 
   ENTITY testbench IS
   END testbench;
@@ -14,6 +16,7 @@
 	signal reset : std_logic := '0';
    signal start : std_logic := '0';
 	signal instruction : std_logic_vector(9 downto 0) := "0000000000";
+	signal wr : std_logic := '0';
    signal result : std_logic_vector(3 downto 0);
    signal result_ready : std_logic;
 
@@ -27,6 +30,7 @@
 			reset => reset,
 			start => start,
 			instruction => instruction,
+			wr => wr,
 			result => result,
 			result_ready => result_ready
      );
@@ -39,8 +43,9 @@
 			wait for clock_period/2;
 		end process;
 	
-		reset<= '1', '0' after 20 ns;
-		start <= '0', '1' after 20 ns;
-		instruction <= "1111110011";
+		reset<= '0';
+		start <= '0', '1' after 80 ns;
+		instruction <= "1111110011", "0011000001" after 30 ns, "0000110011" after 60 ns;
+		wr <= '0', '1' after 10 ns;
 
   END;
