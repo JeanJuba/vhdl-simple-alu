@@ -24,7 +24,7 @@ begin
 	RamProc: process(clock)
 	begin
 	-- Caracteriza a memória como síncrona
-		if rising_edge (clock) then
+		if clock'Event then
 			if we = '1' then
 				ram(to_integer(unsigned(address))) <= datain;
 			end if;
@@ -33,6 +33,6 @@ begin
 	end process RamProc;
 	
 	-- Saída assíncrona , sempre dreando valores na saída
-	dataout<= ram(to_integer(unsigned(read_address)));
+	dataout<= ram(to_integer(unsigned(address)));
 
 end Behavioral;

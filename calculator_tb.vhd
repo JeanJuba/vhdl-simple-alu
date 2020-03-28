@@ -44,8 +44,8 @@
 		end process;
 	
 		reset<= '0';
-		start <= '0', '1' after 80 ns;
-		instruction <= "1111110011", "0011000001" after 30 ns, "0000110011" after 60 ns;
+		start <= '0', '1' after 110 ns;
+		instruction <= "1111110011", "0111000001" after 30 ns, "0001110011" after 60 ns, "1000100011" after 90 ns ;
 		wr <= '0', '1' after 10 ns;
 
   END;
